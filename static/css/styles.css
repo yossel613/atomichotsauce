@@ -1,0 +1,19 @@
+.form-layout{
+
+    border-radius: 20px;
+    width: 500px;
+}
+
+.dashboard-background{
+
+    background-color: #bff8f9;
+    
+}
+
+.dashboard-card{
+
+    background-color: #bff8f9;
+    padding: 5px;
+    border-width: 2px;
+
+}

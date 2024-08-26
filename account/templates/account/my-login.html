@@ -1,0 +1,64 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+
+
+<body>
+    
+
+    <br>
+    <div class="container dashboard-card shadow-md p-5 form-layout">
+        <h3>Login to your account</h3>
+    
+        <br>
+        <br>
+
+        <form method="POST" autocomplete="off" action=".">
+
+            {% csrf_token %}
+
+            {{ form.username | as_crispy_field }}
+            <br>
+            
+            {{ form.password | as_crispy_field }}
+            <br>
+           
+        <div class="text-center">
+            <a href="{% url 'reset_password' %}" class="text-decoration-none">Forgot your password?</a>
+        </div>
+        <br>
+            {% if form.errors or form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+
+                {{ form.non_field_errors }}
+
+            </div>
+        {% endif %}
+
+
+            
+            <button type="submit" class="btn btn-primary btn-lg w-100 btn-block p-2">Login</button>
+
+        </form>
+        <br>
+        <div class="text-center">
+            <a href="{% url 'register' %}" class="text-decoration-none">Don't yet have an account?</a>
+        </div>
+
+
+    </div>
+<br>
+</body>
+
+{% endblock content %}
+
+

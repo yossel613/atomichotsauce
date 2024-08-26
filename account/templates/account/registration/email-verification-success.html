@@ -1,0 +1,39 @@
+
+{% extends "store/base.html" %}
+
+{% load static %}
+{% block title %}Success!{% endblock title %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: grey;
+    }
+</style>
+
+<body>
+    
+
+    <div class="text-center">
+        
+        <br>
+        <div class="container dashboard-card shadow-md p-5 form-layout">
+            <i class="fa fa-check fa-3x text-success" aria-hidden="true"></i>
+            <br>
+            <br>
+            <h4>Your account has been activated!</h4>
+            <hr>
+            <p>Now you can login using your credentials</p>
+            <br><br>
+            <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'my_login' %}"> Login now! </a>
+    
+    
+    
+        </div>
+    <br>
+    </div>
+   
+</body>
+
+{% endblock content %}

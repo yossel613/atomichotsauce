@@ -1,0 +1,64 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+
+
+{% block title %}Dashboard{% endblock title %}
+
+{% load mathfilters %}
+
+{% block content %}
+{% comment %} <style>
+    body {
+        background-color: #87CEEB;
+    }
+</style> {% endcomment %}
+
+<body>
+    
+    <div class="text-center">
+        
+        <br>
+        <div class="container shadow-md p-5 form-layout dashboard-card">
+          <h4>Hello {{ user.username }}</h4>
+          <hr>
+            <h3>Manage your orders here</h3>
+           
+    
+    
+    
+        </div>
+    <br>
+    <hr><br>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+        
+    {% for order in orders %}
+        
+    <br>
+    <div class="container shadow-md p-3 form-layout dashboard-card">
+    <div class="col">
+        <div class="card shadow-sm">
+                   
+            <div class="card-body">
+            <p class="card-text">
+                <p class="text-info text-decoration-none" >Order # {{ order.order_id }}</p>
+            </p><hr>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5>  {{ order.product }} </h5>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5> Quantity: {{ order.quantity }} </h5>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5>Price each $ {{ order.price }} </h5>
+            </div>
+            </div>
+        </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,117 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+
+
+{% block title %}Dashboard{% endblock title %}
+
+{% load mathfilters %}
+
+{% block content %}
+{% comment %} <style>
+    body {
+        background-color: #87CEEB;
+    }
+</style> {% endcomment %}
+
+<body>
+    
+    <div class="text-center">
+        
+        <br>
+        <div class="container shadow-md p-5 form-layout dashboard-card">
+          <h4>Hello {{ user.username }}</h4>
+          <hr>
+            <h3>this is your dashboard</h3>
+           
+    
+    
+    
+        </div>
+    <br>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3 text-center justify-content-center">
+
+        
+
+        <div class="col">
+          <div class="card shadow-sm dashboard-card" style="width: absolute;">
+            
+                <div class="card-body ">
+                <p class="card-text">
+                    <p class="text-info text-decoration-none" >This is where you'll see your orders</p>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'track-orders' %}"> My Orders </a>
+                    <br>
+                </div>
+                </div>
+            
+          </div>
+        
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm dashboard-card" style="width: absolute;">
+              
+                  <div class="card-body">
+                  <p class="card-text">
+                      <h5 class="text-info text-decoration-none" >Shopping cart summary</h5>
+                  </p>
+                  <hr>
+                  {% for item in cart %}
+                    {% with product=item.product %}
+                    <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-primary"> 
+                    <div class="text-left align-left col-6 col-xsm"> <span class="h5 pt-2"> {{ product.title | capfirst }} </span></div>
+                     <div class="col-sm text-end align-right"><span class="h6 fw-bold">$ {{ product.price|mul:item.quantity }} </span></div>
+
+                    </a>
+                    
+                    {% endwith %}
+                  
+                  {% endfor %}
+                    <hr>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'cart_summary' %}"> My Shopping Cart </a>
+                    <br>
+                  </div>
+                  </div>
+              
+            </div>
+          
+          </div>
+
+
+          <div class="col">
+            <div class="card shadow-sm dashboard-card" style="width: responsive;">
+              
+                  <div class="card-body" > 
+                  <p class="card-text">
+                      <p class="text-info text-decoration-none" >This is where you can manage your account</p>
+                  </p>
+                  <div class="d-flex align-items-center btn-toolbar">
+                    <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'profile' %}"> Profile </a>
+                    <br><div class="p-3"><br></div>
+                    <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'manage-shipping' %}"> Manage Shipping Address</a>
+                    <br><div class="p-3"><br></div>
+                    <a class="btn btn-danger navbar-btn text-white" type="button"  href="{% url 'user_logout' %}"> Logout </a>
+                    <div class="p-3"><br></div>
+                  </div>
+                  </div>
+              
+            </div>
+          
+          </div>
+
+        </div>
+
+        
+    
+</body>
+
+
+
+
+
+{% endblock %}

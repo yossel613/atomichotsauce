@@ -1,0 +1,71 @@
+{% extends "store/base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Shipping info {% endblock title %}
+
+{% block content %}
+
+
+
+<body>
+    
+
+    <br>
+    <div class="container dashboard-card shadow-md p-5 form-layout">
+        <h3>Manage your shipping address</h3>
+    <hr>
+       
+
+        <form method="POST" autocomplete="off" action="">
+
+            {% csrf_token %}
+
+            {{ form.full_name | as_crispy_field }}
+            <br>
+            
+            {{ form.email | as_crispy_field }}
+            <br>
+
+            {{ form.address1 | as_crispy_field }}
+            <br>
+            
+            {{ form.address2 | as_crispy_field }}
+            <br>
+
+            {{ form.city | as_crispy_field }}
+            <br>
+            
+            {{ form.state | as_crispy_field }}
+            <br>
+           
+            {{ form.zipcode | as_crispy_field }}
+            <br>
+        
+            {% if form.errors or form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+
+                {{ form.non_field_errors }}
+
+            </div>
+        {% endif %}
+
+
+            
+            <button type="submit" class="btn btn-primary btn-lg w-100 btn-block p-2">Update you shipping address</button>
+
+        </form>
+        <br>
+
+
+    </div>
+<br>
+</body>
+
+{% endblock content %}
+
+
